@@ -2,9 +2,7 @@ package it.polito.tdp.spellchecker;
 
 import java.util.List;
 
-import it.polito.tdp.spellchecker.checkstrategies.ContainsChecking;
-import it.polito.tdp.spellchecker.checkstrategies.DichotomicChecking;
-import it.polito.tdp.spellchecker.checkstrategies.SpellCheckingStrategy;
+import it.polito.tdp.spellchecker.checkstrategies.*;
 import it.polito.tdp.spellchecker.model.*;
 import it.polito.tdp.spellchecker.model.SpellCheckerManager.DictionaryType;
 import javafx.application.Application;
@@ -29,8 +27,11 @@ public class EntryPoint extends Application
         //set here dictionary data structure and the type of search
         DictionaryType dictionaryType = DictionaryType.ArrayList;
         SpellCheckingStrategy checkingType = new DichotomicChecking();
+        
+        //dependency injection
         SpellCheckerManager spellCheckerModel = new SpellCheckerManager(dictionaryType, checkingType);
         
+        //set here dictionary languages
         List<String> languages = List.of("English","Italian");
         controller.setModel(spellCheckerModel, languages);
         
