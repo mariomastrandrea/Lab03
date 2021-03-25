@@ -1,4 +1,4 @@
-package it.polito.tdp.spellchecker.model;
+package it.polito.tdp.spellchecker.checkstrategies;
 
 import java.util.Collection;
 

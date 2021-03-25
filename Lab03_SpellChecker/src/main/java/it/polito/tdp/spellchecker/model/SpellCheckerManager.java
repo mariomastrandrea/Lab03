@@ -13,6 +13,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 
+import it.polito.tdp.spellchecker.checkstrategies.SpellCheckingStrategy;
+
 public class SpellCheckerManager
 {
 	private String languageSelected;
@@ -77,21 +79,22 @@ public class SpellCheckerManager
 	public Set<String> checkWrongWords(String inputText)
 	{
 		this.wrongWords.clear();
+		Collection<String> dictionary = this.dictionariesByName.get(this.languageSelected);
 		StringTokenizer tokenizer = new StringTokenizer(inputText);
 		
 		String word;
 		while(tokenizer.hasMoreTokens())
 		{
 			word = tokenizer.nextToken();
-			if(!isCorrect(word))
+			
+			if(!isCorrect(word, dictionary))
 				this.wrongWords.add(word);
 		}
 		return this.wrongWords;
 	}
 	
-	private boolean isCorrect(String word)
+	private boolean isCorrect(String word, Collection<String> dictionary)
 	{
-		Collection<String> dictionary = this.dictionariesByName.get(this.languageSelected);
 		return this.checkingStrategy.isCorrect(word, dictionary);
 	}
 
