@@ -25,7 +25,7 @@ public class EntryPoint extends Application
         scene.getStylesheets().add("/styles/Styles.css");
        
         //set here dictionary data structure and the type of search
-        DictionaryType dictionaryType = DictionaryType.ArrayList;
+        DictionaryType dictionaryType = DictionaryType.LinkedList;
         SpellCheckingStrategy checkingType = new DichotomicChecking();
         
         //dependency injection

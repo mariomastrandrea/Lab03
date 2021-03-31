@@ -79,7 +79,11 @@ public class SpellCheckerManager
 	public Set<String> checkWrongWords(String inputText)
 	{
 		this.wrongWords.clear();
+		
 		Collection<String> dictionary = this.dictionariesByName.get(this.languageSelected);
+		if(dictionary == null || dictionary.isEmpty())
+			return this.wrongWords;
+		
 		StringTokenizer tokenizer = new StringTokenizer(inputText);
 		
 		String word;

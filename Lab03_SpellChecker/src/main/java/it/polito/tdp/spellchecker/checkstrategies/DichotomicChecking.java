@@ -7,18 +7,13 @@ public class DichotomicChecking implements SpellCheckingStrategy
 {
 	@Override
 	public boolean isCorrect(String word, Collection<String> dictionary)
-	{
-		//TODO: control method
-		
-		if(dictionary == null || dictionary.isEmpty())
-			return false;
-		
-		else if(!(dictionary instanceof List))
+	{		
+		if(!(dictionary instanceof List))
 			return dictionary.contains(word);
-		
 		else 
 		{
 			List<String> listDictionary = (List<String>)dictionary;
+			
 			int lowerIndex = 0;
 			int upperIndex = listDictionary.size()-1;
 			
@@ -42,4 +37,5 @@ public class DichotomicChecking implements SpellCheckingStrategy
 			return false;
 		}
 	}
+	
 }
